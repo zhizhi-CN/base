@@ -17,6 +17,5 @@ group("googlebase") {
   deps = [
     "//base:base",
     "//base:i18n",
-    "//build/config:exe_and_shlib_deps",
   ]
 }

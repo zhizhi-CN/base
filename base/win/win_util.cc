@@ -152,42 +152,7 @@ bool IsWindows10TabletDevice() {
     }
   }
 
-  HRESULT hr = E_FAIL;
-  // This HSTRING is allocated on the heap and is leaked.
-  static HSTRING view_settings_guid = NULL;
-  if (!view_settings_guid) {
-    hr = create_string(
-        RuntimeClass_Windows_UI_ViewManagement_UIViewSettings,
-        static_cast<UINT32>(
-            wcslen(RuntimeClass_Windows_UI_ViewManagement_UIViewSettings)),
-        &view_settings_guid);
-    if (FAILED(hr))
-      return false;
-  }
-
-  base::win::ScopedComPtr<IUIViewSettingsInterop> view_settings_interop;
-  hr = get_factory(view_settings_guid,
-                   __uuidof(IUIViewSettingsInterop),
-                   view_settings_interop.ReceiveVoid());
-  if (FAILED(hr))
-    return false;
-
-  base::win::ScopedComPtr<ABI::Windows::UI::ViewManagement::IUIViewSettings>
-      view_settings;
-  // TODO(ananta)
-  // Avoid using GetForegroundWindow here and pass in the HWND of the window
-  // intiating the request to display the keyboard.
-  hr = view_settings_interop->GetForWindow(
-      ::GetForegroundWindow(),
-      __uuidof(ABI::Windows::UI::ViewManagement::IUIViewSettings),
-      view_settings.ReceiveVoid());
-  if (FAILED(hr))
-    return false;
-
-  ABI::Windows::UI::ViewManagement::UserInteractionMode mode =
-      ABI::Windows::UI::ViewManagement::UserInteractionMode_Mouse;
-  view_settings->get_UserInteractionMode(&mode);
-  return mode == ABI::Windows::UI::ViewManagement::UserInteractionMode_Touch;
+  return false;
 }
 
 }  // namespace
