@@ -4,7 +4,9 @@ vars = {
 
 deps = { 
   'src/buildtools':
-    (Var("chromium_git")) + '/external/github.com/google/open-vcdiff.git@21d7d0b9c3d0c3ccbdb221c85ae889373f0a2a58',
+    (Var("chromium_git")) + '/chromium/buildtools.git@0f8e6e4b126ee88137930a0ae4776c4741808740',
+  'src/tools/gyp':
+    (Var("chromium_git")) + '/external/gyp.git@54b7dfc03f746b6a539ac38f2fb0815d10b54734',
   'src/testing/gmock':
     (Var("chromium_git")) + '/external/googlemock.git@0421b6f358139f02e102c9c332ce19a33faf75be',
   'src/testing/gtest':
@@ -19,7 +21,22 @@ deps_os = {
 }
 
 hooks = [
- 
+   {
+    'action': [
+      'download_from_google_storage',
+      '--no_resume',
+      '--platform=win32',
+      '--no_auth',
+      '--bucket',
+      'chromium-gn',
+      '-s',
+      'src/buildtools/win/gn.exe.sha1'
+    ],
+    'pattern':
+      '.',
+    'name':
+      'gn_win'
+  }
 ]
 
 include_rules = [
