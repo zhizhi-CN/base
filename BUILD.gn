@@ -17,6 +17,7 @@ group("googlebase") {
   deps = [
     "//base:base",
     "//base:i18n",
-    "//crypto:crypto"
+    "//crypto:crypto",
+    "//ipc:ipc"
   ]
 }
