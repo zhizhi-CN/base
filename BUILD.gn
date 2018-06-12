@@ -18,6 +18,7 @@ group("googlebase") {
     "//base:base",
     "//base:i18n",
     "//crypto:crypto",
-    "//ipc:ipc"
+    "//ipc:ipc",
+    "//sql:sql",
   ]
 }
