@@ -13,6 +13,10 @@ deps = {
     (Var("chromium_git")) + '/external/github.com/google/googletest.git@6f8a66431cb592dad629028a50b3dd418a408c87',
   'src/third_party/icu':
     (Var("chromium_git")) + '/chromium/deps/icu.git@8f91ea3a7e0413df3312204058da856058a8099b',
+  'src/third_party/boringssl/src':
+    'https://boringssl.googlesource.com/boringssl.git@907ae62b9d81121cb86b604f83e6b811a43f7a87',
+  'src/third_party/yasm/source/patched-yasm':
+    (Var("chromium_git")) + '/chromium/deps/yasm/patched-yasm.git@4671120cd8558ce62ee8672ebf3eb6f5216f909b'
 }
 
 deps_os = { 
