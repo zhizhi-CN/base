@@ -595,7 +595,7 @@ template("component") {
   } else if (_never_use_source_set) {
     _component_mode = "static_library"
   } else {
-    _component_mode = "source_set"
+    _component_mode = "static_library"
   }
   target(_component_mode, target_name) {
     forward_variables_from(invoker, "*")

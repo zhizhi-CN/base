@@ -13,10 +13,10 @@ import("//build/config/sanitizers/sanitizers.gni")
 
 import("//testing/test.gni")
 
-group("googlebase") {
+group("all") {
+  testonly = true
   deps = [
     "//base:base",
-    "//base:i18n",
     "//crypto:crypto",
     "//ipc:ipc",
     "//sql:sql",
