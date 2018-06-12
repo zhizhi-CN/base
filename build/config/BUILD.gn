@@ -5,8 +5,8 @@
 import("//build/config/allocator.gni")
 import("//build/config/crypto.gni")
 import("//build/config/sanitizers/sanitizers.gni")
-
-declare_args() {
+import("//build/config/chrome_build.gni")
+declare_args() {  
   # When set (the default) enables C++ iterator debugging in debug builds.
   # Iterator debugging is always off in release builds (technically, this flag
   # affects the "debug" config, which is always available but applied by
@@ -262,7 +262,7 @@ config("shared_library_config") {
 #
 # Recommend precompiled headers for targets with more than 50 .cc files.
 config("precompiled_headers") {
-  if (is_win && !is_official_build && !use_goma) {
+  if (is_win && !is_official_build) {
     # This is a string rather than a file GN knows about. It has to match
     # exactly what's in the /FI flag below, and what might appear in the source
     # code in quotes for an #include directive.
