@@ -38,7 +38,7 @@ config("compiler") {
 
   # Work around crbug.com/526851, bug in VS 2015 RTM compiler.
   if (visual_studio_version == "2015") {
-    cflags += [ "/Zc:sizedDealloc-" ]
+    cflags += [ "/Zc:sizedDealloc-", "/utf-8"]
   }
 
   # Building with Clang on Windows is a work in progress and very
