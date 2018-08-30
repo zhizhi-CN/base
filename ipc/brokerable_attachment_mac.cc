@@ -4,7 +4,7 @@
 
 #include "ipc/brokerable_attachment.h"
 
-#include "crypto/random.h"
+#include "base/rand_util.h"
 
 namespace IPC {
 
@@ -15,7 +15,7 @@ BrokerableAttachment::AttachmentId::CreateIdWithRandomNonce() {
   // In order to prevent mutually untrusted processes from stealing resources
   // from one another, the nonce must be secret. This generates a 128-bit,
   // cryptographicaly-strong random number.
-  crypto::RandBytes(id.nonce, BrokerableAttachment::kNonceSize);
+  base::RandBytes(id.nonce, BrokerableAttachment::kNonceSize);
   return id;
 }
 

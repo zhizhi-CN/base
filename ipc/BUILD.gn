@@ -132,7 +132,7 @@ component("ipc") {
   if (is_win || is_mac) {
     # On Windows HandleAttachmentWin needs to generate random IDs.
     # On Mac MachPortAttachmentMac needs to generate random IDs.
-    deps += [ "//crypto" ]
+    # deps += [ "//crypto" ]
   }
 }
 
@@ -198,7 +198,7 @@ test("ipc_tests") {
     "//base:i18n",
     "//base/test:run_all_unittests",
     "//base/test:test_support",
-    "//crypto",
+    # "//crypto",
     "//testing/gtest",
   ]
 }

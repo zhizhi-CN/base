@@ -120,13 +120,15 @@ template("msvc_toolchain") {
     }
 
     tool("alink") {
-      rspfile = "{{output}}.rsp"
-      command = "$python_path gyp-win-tool link-wrapper $env False lib.exe /nologo /ignore:4221 /OUT:{{output}} @$rspfile"
-      description = "LIB {{output}}"
+      libname = "{{root_out_dir}}/{{target_output_name}}.lib"  # e.g. foo.dll
+      rspfile = "${libname}.rsp"
+      
+      command = "$python_path gyp-win-tool link-wrapper $env False lib.exe /nologo /ignore:4221 /OUT:$libname @$rspfile"
+      description = "LIB $libname"
       outputs = [
         # Ignore {{output_extension}} and always use .lib, there's no reason to
         # allow targets to override this extension on Windows.
-        "{{target_out_dir}}/{{target_output_name}}.lib",
+        libname,
       ]
       default_output_extension = ".lib"
 
