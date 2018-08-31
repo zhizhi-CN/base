@@ -113,7 +113,7 @@ component("protobuf_lite") {
 # specify the LITE_RUNTIME option. The protocol compiler itself (protoc) falls
 # into that category. Do not use in Chrome code.
 
-source_set("protobuf_full") {
+component("protobuf_full") {
   # Prevent people from depending on this outside our file.
   visibility = [ ":*" ]
 

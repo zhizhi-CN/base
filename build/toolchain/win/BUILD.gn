@@ -120,7 +120,7 @@ template("msvc_toolchain") {
     }
 
     tool("alink") {
-      libname = "{{root_out_dir}}/{{target_output_name}}.lib"  # e.g. foo.dll
+      libname = "{{root_out_dir}}/libs/{{target_output_name}}.lib"  # e.g. foo.dll
       rspfile = "${libname}.rsp"
       
       command = "$python_path gyp-win-tool link-wrapper $env False lib.exe /nologo /ignore:4221 /OUT:$libname @$rspfile"
