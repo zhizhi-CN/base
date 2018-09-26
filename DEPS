@@ -3,6 +3,8 @@ vars = {
 }
 
 deps = { 
+  'src/breakpad/src':
+    (Var("chromium_git")) + '/breakpad/breakpad/src.git@ba0a8cb51c79845955cd0f262fe1a2a5f1ead9b9',
   'src/buildtools':
     (Var("chromium_git")) + '/chromium/buildtools.git@0f8e6e4b126ee88137930a0ae4776c4741808740',
   'src/tools/gyp':

@@ -20,6 +20,7 @@ group("all") {
     "//crypto:crypto",
     "//ipc:ipc",
     "//sql:sql",
+    "breakpad:client",
     "//third_party/protobuf:protobuf_lite",
     "//third_party/protobuf:protoc"
   ]
