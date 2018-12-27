@@ -16,12 +16,6 @@ import("//testing/test.gni")
 group("all") {
   testonly = true
   deps = [
-    "//base:base",
-    "//crypto:crypto",
-    "//ipc:ipc",
-    "//sql:sql",
-    "breakpad:client",
-    "//third_party/protobuf:protobuf_lite",
-    "//third_party/protobuf:protoc"
+    "//base:base",   
   ]
 }
