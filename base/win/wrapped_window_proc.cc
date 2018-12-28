@@ -6,7 +6,8 @@
 
 #include "base/atomicops.h"
 #include "base/logging.h"
-#include "base/process/memory.h"
+
+#include "base/win/current_module.h"
 
 namespace {
 
@@ -47,7 +48,7 @@ BASE_EXPORT void InitializeWindowClass(
   class_out->lpfnWndProc = window_proc;
   class_out->cbClsExtra = class_extra;
   class_out->cbWndExtra = window_extra;
-  class_out->hInstance = base::GetModuleFromAddress(window_proc);
+  class_out->hInstance = CURRENT_MODULE();
   class_out->hIcon = large_icon;
   class_out->hCursor = cursor;
   class_out->hbrBackground = background;

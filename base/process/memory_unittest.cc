@@ -49,25 +49,6 @@ typedef BOOL (WINAPI* HeapQueryFn)  \
 
 const int kConstantInModule = 42;
 
-TEST(ProcessMemoryTest, GetModuleFromAddress) {
-  // Since the unit tests are their own EXE, this should be
-  // equivalent to the EXE's HINSTANCE.
-  //
-  // kConstantInModule is a constant in this file and
-  // therefore within the unit test EXE.
-  EXPECT_EQ(::GetModuleHandle(NULL),
-            base::GetModuleFromAddress(
-                const_cast<int*>(&kConstantInModule)));
-
-  // Any address within the kernel32 module should return
-  // kernel32's HMODULE.  Our only assumption here is that
-  // kernel32 is larger than 4 bytes.
-  HMODULE kernel32 = ::GetModuleHandle(L"kernel32.dll");
-  HMODULE kernel32_from_address =
-      base::GetModuleFromAddress(reinterpret_cast<DWORD*>(kernel32) + 1);
-  EXPECT_EQ(kernel32, kernel32_from_address);
-}
-
 TEST(ProcessMemoryTest, EnableLFH) {
   ASSERT_TRUE(base::EnableLowFragmentationHeap());
   if (IsDebuggerPresent()) {
