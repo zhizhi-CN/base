@@ -22,7 +22,6 @@
 #include "base/posix/eintr_wrapper.h"
 #include "base/process/kill.h"
 #include "base/process/launch.h"
-#include "base/process/memory.h"
 #include "base/process/process.h"
 #include "base/process/process_metrics.h"
 #include "base/strings/string_number_conversions.h"
